@@ -1,0 +1,69 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{device.name}}">
+  <ion-content class="padding" align="center">
+    <img ng-src="{{device.face}}" style="width: 64px; height: 64px">
+	<ion-element>
+		<div class="list" ng-show="weatherWidget">
+			<p>Temperature: <b>{{temp}}&deg;C</b></p>
+			<div class="item range range-balanced gradient-temp-background">
+			<i class="icon ion-ios-sunny"></i>
+			<input type="range" name="volume" min="0" max="60" ng-model="temp"  disabled>
+			<i class="icon ion-ios-sunny-outline"></i>
+			</div><br>
+			
+			<p>Humidity: <b>{{humidity}}%RH</b></p>
+			<div class="item range range-balanced gradient-humidity-background">
+			<i class="icon ion-ios-flame-outline"></i>
+			<input type="range" name="volume" min="0" max="100" ng-model="humidity"  disabled>
+			<i class="icon ion-ios-flame"></i>
+			</div><br>
+			
+			<p>Raining now: <b>{{rainPresence}}</b></p>
+			<p>Rain: <b>{{rain}}mm</b> over year</p>
+			<div class="item range range-balanced gradient-rain-background">
+			<i class="icon ion-ios-rainy"></i>
+			<input type="range" name="volume" min="0.1" max="2.5" ng-model="rain"  disabled>
+			<i class="icon ion-ios-rainy-outline"></i>
+			</div>
+			<!--p class="switch-toggle">last seen: {{timestamp}}</p-->
+		</div>
+		<div class="list" ng-show="switchWidget">
+			<img ng-src="{{motorImageStatus}}" width="240px" height="140px"/><br>
+			<ion-item>
+				<span class="toggle-question">Water pump control</span>
+				<ion-toggle class="switch-toggle"
+							toggle-class="toggle-balanced"
+							ng-model="outlet_status.value"
+							ng-true-value="'ON'"
+							ng-false-value="'OFF'"
+							ng-change="outletControl()">
+				</ion-toggle>
+			</ion-item>
+		</div>
+		<div class="list" ng-show="earthWidget"><br>
+			<p>Moisture:  <b>{{moistureText}}</b><br><br>
+			Soil Moisture: <b>{{moisture}}</b></p>
+			<div class="item range range-balanced gradient-moisture-background">
+			<i class="icon ion-ios-fire-outline">0</i>
+			<input type="range" name="volume" min="0" max="1024" ng-model="moisture"  disabled>
+			<i class="icon ion-ios-fire item-text-wrap"">1024</i>
+			</div>
+		</div>
+		<div class="list" ng-show="eyeWidget">
+			<b>Farm Image: {{farmImageText}}</b><br>
+			<img ng-src="{{farmImage}}" width="320px" height="240px"/><br>
+			<button class="button button-full button-balanced" ng-click="getImage()">Get Image Now</button>
+		</div>
+		<div class="list" ng-show="birdWidget">
+		 <iframe src="{{farmVideo | trustAsResourceUrl}}" frameborder="0" width="340" height="315"></iframe>
+		</div>
+	</ion-element>
+	<ion-element>{{humWidget}}</ion-element>
+	<ion-element>{{soilWidget}}</ion-element>
+  </ion-content>  
+</ion-view>

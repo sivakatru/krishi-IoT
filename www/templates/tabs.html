@@ -1,0 +1,68 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-custom" align-title="center">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-striped tabs-top tabs-icon-top tabs-background-custom tabs-color-light">
+
+  <!-- Dashboard Tab -->
+  <ion-tab title="Home" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/status">
+    <ion-nav-view name="tab-status"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Devices Tab -->
+  <ion-tab title="Devices" icon-off="ion-ios-list-outline" icon-on="ion-ios-list" href="#/tab/devices">
+    <ion-nav-view name="tab-devices"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Settings Tab -->
+  <ion-tab title="Settings" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>
+</ion-side-menu-content>   
+
+  
+<!-- Side Menu (left) -->
+  <ion-side-menu side="left" class="custom">
+    <ion-header-bar class="bar-custom">
+      <h1 class="title">krishi IoT</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="PopupCtrl">
+      <ion-list>
+        <ion-item menu-close href="#/tab/status">
+          Welcome
+        </ion-item>
+        <ion-item menu-close ng-click="login()">
+          Login
+        </ion-item>
+        <ion-item menu-close href="#/tab/devices">
+          Dashboard
+        </ion-item>
+        <ion-item menu-close href="#/tab/account">
+          Settings
+        </ion-item>
+		<ion-item menu-close href="#/tab/regLang">
+          Languages
+        </ion-item>
+		<ion-item menu-close href="#/tab/about">
+          About Us
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,395 @@
+$button-on-color: #ccc !default;
+$button-off-color: #000 !default;
+
+$selection-color: #e91e63 !default;
+$secondary-selection-color: #ff4081 !default;
+
+$weekly-color: #ff4081 !default;
+$daily-color: #18ffff !default;
+$manual-color: #5af158 !default;
+$static-color: #ff9800 !default;
+$animation-color: #b2ff59 !default;
+
+@import "../bower/ionicons/scss/ionicons.scss";
+
+svg{
+    .line-selection {
+        stroke: $selection-color;
+    }
+    .content-selection {
+        fill: $selection-color;
+    }
+    .secondary-line-selection {
+        stroke: $secondary-selection-color;
+    }
+    .secondary-content-selection {
+        fill: $secondary-selection-color;
+    }
+}
+
+.clock-viewer{
+    height: 200px;
+    width: 240px;
+}
+
+.light-viewer{
+    height: 260px;
+    width: 240px;
+}
+
+.on-off-button{
+    position: relative;
+    height: 260px;
+    width: 230px;
+}
+
+.scale{
+}
+
+@keyframes pulse {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    10% {
+        transform: scale3d(.8, .8, .8);
+    }
+
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+
+    60% {
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.pulse {
+    animation-name: pulse;
+}
+
+.animated-quick {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.show-hide-opacity {
+    will-change: transform, opacity;
+    transition:opacity ease-in-out 1s;
+}
+
+.show-hide-opacity.ng-hide {
+    opacity:0;
+}
+
+.button-on-svg {
+    stroke: $button-on-color;
+}
+
+.button-off-svg {
+    stroke: $button-off-color;
+}
+
+.button-on {
+    background-color: $button-on-color;
+}
+
+.button-off {
+    background-color: $button-off-color;
+}
+
+.override{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.round-button {
+    border-radius: 75px;
+    height: 150px;
+    width: 150px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-shadow {
+    box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, .46);
+    &:active {
+        @extend .element-shadow;
+    }
+}
+
+.animated-colors input:checked ~ .animated-color{
+    will-change: transform;
+    border-width: 2px;
+    border-style: solid;
+    transform: scale(2);
+    -webkit-transform: scale(2);
+    box-shadow: 1px 4px 7px 1px rgba(0,0,0,.76)!important;
+}
+
+.animated-color {
+    will-change: background;
+    animation-iteration-count: infinite;
+}
+
+.animated-color {
+    animation-iteration-count: infinite;
+}
+
+.animation-enabled {
+    .fx-rotate-clock {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: rotateOut 1s;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: rotateIn 1s;
+        }
+    }
+
+    .fx-bounce-normal {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: bounceOut 1s;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: bounceIn 1s;
+        }
+    }
+
+    .fx-bounce-left {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: bounceOutLeft 1s;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: bounceInLeft 1s;
+        }
+    }
+
+    .fx-bounce-right {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: bounceOutRight 1s;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: bounceInLeft 1s;
+        }
+    }
+
+    .fx-zoom-normal {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: zoomOut 1s;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: zoomIn 1s;
+        }
+    }
+
+    .fx-roll-fixed {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: rollOutFixed 1s ease-in;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: rollInFixed 1s ease-out;
+        }
+    }
+
+    .fx-roll {
+        will-change: transform, opacify;
+        &.ng-hide-add {
+            animation: rollOut 1s ease-in;
+            opacity: 0;
+        }
+        &.ng-hide-remove {
+            animation: rollIn 1s ease-out;
+        }
+    }
+}
+
+@keyframes mode1 {
+    0%   {background-color:#f00;}
+    33%  {background-color:#0f0;}
+    66%  {background-color:#00f;}
+    100% {background-color:#f00;}
+}
+
+@keyframes mode2 {
+    0%   {background-color:#f00;}
+    16%   {background-color:#ff0;}
+    33%  {background-color:#0f0;}
+    49%   {background-color:#0ff;}
+    66%  {background-color:#00f;}
+    82%   {background-color:#f0f;}
+    100% {background-color:#f00;}
+}
+
+@keyframes mode3 {
+    0%   {background-color:#000;}
+    16%   {background-color:#ff0;}
+    33%  {background-color:#000;}
+    49%   {background-color:#0ff;}
+    66%  {background-color:#000;}
+    82%   {background-color:#f0f;}
+    100% {background-color:#000;}
+}
+
+@keyframes mode4 {
+    0%   {background-color:#f00;}
+    16%   {background-color:#000;}
+    33%  {background-color:#0f0;}
+    49%   {background-color:#000;}
+    66%  {background-color:#00f;}
+    82%   {background-color:#000;}
+    100% {background-color:#f00;}
+}
+
+@keyframes mode5 {
+    0%   {background-color:#000;}
+    90%   {background-color:#000;}
+    100% {background-color:#f00;}
+}
+
+@keyframes mode6 {
+    0%   {background-color:#000;}
+    90%   {background-color:#000;}
+    100% {background-color:#ff0;}
+}
+
+@keyframes mode7 {
+    0%   {background-color:#000;}
+    90%   {background-color:#000;}
+    100% {background-color:#0f0;}
+}
+
+@keyframes mode8 {
+    0%   {background-color:#000;}
+    90%   {background-color:#000;}
+    100% {background-color:#0ff;}
+}
+
+@keyframes mode9 {
+    0%   {background-color:#000;}
+    90%   {background-color:#000;}
+    100% {background-color:#00f;}
+}
+
+@keyframes mode10 {
+    0%   {background-color:#000;}
+    90%   {background-color:#000;}
+    100% {background-color:#fff;}
+}
+
+@keyframes mode11 {
+    0%   {background-color:#000;}
+    100% {background-color:#f00;}
+}
+
+@keyframes mode12 {
+    0%   {background-color:#000;}
+    100% {background-color:#ff0;}
+}
+
+@keyframes mode13 {
+    0%   {background-color:#000;}
+    100% {background-color:#0f0;}
+}
+
+@keyframes mode14 {
+    0%   {background-color:#000;}
+    100% {background-color:#0ff;}
+}
+
+@keyframes mode15 {
+    0%   {background-color:#000;}
+    100% {background-color:#00f;}
+}
+
+@keyframes mode16 {
+    0%   {background-color:#000;}
+    100% {background-color:#fff;}
+}
+
+.transform-animation {
+    will-change: transform;
+    transition: transform 1s ease-in-out;
+}
+
+.background-animation {
+    transition: background 1s ease-in-out;
+}
+
+.mode-selector .tab-nav.tabs{
+    display: none;
+}
+
+.mode-selector{
+    .mode-selector-botton{
+        background-color: #fff;
+    }
+    &.daily{
+        .mode-selector-botton{
+            background-color: $daily-color;
+        }
+    }
+    &.weekly{
+        .mode-selector-botton{
+            background-color: $weekly-color;
+        }
+    }
+    &.manual{
+        .mode-selector-botton{
+            background-color: $manual-color;
+        }
+    }
+    &.static{
+        .mode-selector-botton{
+            background-color: $static-color;
+        }
+    }
+    &.animation{
+        .mode-selector-botton{
+            background-color: $animation-color;
+        }
+    }
+}
+
+.element-shadow {
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, .46);
+}
+
+.button-shadow {
+    box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, .46);
+    &:active {
+        @extend .element-shadow;
+    }
+}

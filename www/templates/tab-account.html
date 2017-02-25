@@ -1,0 +1,39 @@
+<ion-view view-title="krishi IoT">
+  <ion-content class="padding">
+	<form name="myForm" novalidate>
+    <div class="list">
+	<label class="item item-input">
+	  <span class="input-label">MQTT Broker*</span>
+	  <input type="text" name="settings.broker" ng-model="settings.broker" required>
+	</label>
+	<label class="item item-input">
+	  <span class="input-label">MQTT Port*</span>
+	  <input type="text" name="settings.port" ng-model="settings.port" required>
+	</label>
+	<label class="item item-input">
+	  <span class="input-label">Client ID*</span>
+	  <input type="text" name="settings.clientID" ng-model="settings.clientID" required>
+	</label>
+	<label class="item item-input">
+	  <span class="input-label">Username</span>
+	  <input type="text" placeholder="Optional" ng-model="settings.username">
+	</label>
+	<label class="item item-input">
+	  <span class="input-label">Password</span>
+	  <input type="password" placeholder="Optional" ng-model="settings.pwd">
+	</label>
+    </div>
+	<div class="padding">
+	<p ng-show="myForm.settings.broker.$error.required">* Broker URI is required</p>
+	<p ng-show="myForm.settings.port.$error.required">* Port must be filled</p>
+	<p ng-show="myForm.settings.clientID.$error.required">* Unique client ID is needed</p>
+	</div>	
+	<p>* mandatory fields</p>
+	<div class="padding">
+	<button class="button button-full button-balanced" ng-click="connect2Broker()" ng-disabled="myForm.$invalid">
+	  Connect to Broker
+	</button>
+	</div>
+	</form>
+  </ion-content>
+</ion-view>

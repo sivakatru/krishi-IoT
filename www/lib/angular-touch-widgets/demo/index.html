@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Angular Touch Widgets Demo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="dist/angular-touch-widgets.css">
+    <style>
+        .mode-selector.pinterest .mode-selector-botton{
+            background-color: #BD081C;
+        }
+        .mode-selector.facebook .mode-selector-botton{
+            background-color: #3B5998;
+        }
+        .mode-selector.twitter .mode-selector-botton{
+            background-color: #1DA0F2;
+        }
+        .mode-selector i{
+            color: white;
+        }
+
+        h1{
+            background-color: black;
+            color: white;
+            padding: 20px;
+            margin-bottom: 0;
+        }
+        .code{
+            background-color: #aaa;
+            border-bottom-color: black;
+            border-width: 2px;
+            padding: 10px;
+        }
+
+        .example{
+            background-color: #f3f3f3;
+            border-bottom-color: black;
+            border-width: 1px;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body ng-app="DemoApp" ng-controller="demoController">
+
+
+<h1>
+    Clock directives
+</h1>
+<div class="code">
+    var from= '01:00';
+    <br/>
+    var to= '03:30';
+    <br/>
+    &lt;clock-editor from=&quot;from&quot; to=&quot;to&quot;&gt;&lt;/clock-editor&gt;
+    <br/>
+    &lt;clock-viewer from=&quot;from&quot; to=&quot;to&quot; on-tab=&quot;alert('click')&quot;&gt;&lt;/clock-viewer&gt;
+</div>
+<div ng-init="from= '01:00'; to= '03:30';" class="example">
+    <clock-editor from="from" to="to"></clock-editor>
+    <clock-viewer from="from" to="to" on-tab="alert('click')"></clock-viewer>
+</div>
+
+
+<h1>
+    Time directives
+</h1>
+<div class="code">
+    var time= '30';
+    <br/>
+    &lt;timer-editor time=&quot;time&quot; can-be-zero=&quot;false&quot;&gt;&lt;/timer-editor&gt;
+    <br/>
+    &lt;timer-viewer time=&quot;time&quot; on-tab=&quot;alert('click')&quot;&gt;&lt;/timer-viewer&gt;
+</div>
+<div ng-init="time= '30';" class="example">
+    <timer-editor time="time" can-be-zero="false"></timer-editor>
+    <timer-viewer time="time" on-tab="alert('click')"></timer-viewer>
+</div>
+
+
+<h1>
+    Thermometer directives
+</h1>
+<div class="code">
+    var actualTemp= 10;
+    <br/>
+    var setTemp= 25;
+    <br/>
+    &lt;thermometer-editor set-temp=&quot;setTemp&quot; min-temp=&quot;0&quot; max-temp=&quot;30&quot;&gt;&lt;/thermometer-editor&gt;
+    <br/>
+    &lt;thermometer-editor actual-temp=&quot;actualTemp&quot; set-temp=&quot;setTemp&quot;&gt;&lt;/thermometer-editor&gt;
+</div>
+<div ng-init="actualTemp= 10; setTemp= 25;" class="example">
+    <thermometer-editor set-temp="setTemp" min-temp="0" max-temp="30"></thermometer-editor>
+    <thermometer-editor actual-temp="actualTemp" set-temp="setTemp"></thermometer-editor>
+    <input type="number" ng-model="actualTemp"></input>
+</div>
+
+
+<h1>
+    ORP and PH directives
+</h1>
+<div class="code">
+    var orp= 1;
+    <br/>
+    var ph=7;
+    <br/>
+    &lt;orp-viewer orp=&quot;orp&quot;&gt;&lt;/orp-viewer&gt;
+    <br/>
+    &lt;ph-viewer ph=&quot;ph&quot;&gt;&lt;/ph-viewer&gt;
+</div>
+<div ng-init="orp= 1; ph=7;" class="example">
+    <orp-viewer orp="orp"></orp-viewer>
+    <input type="number" ng-model="orp"></input>
+    <ph-viewer ph="ph"></ph-viewer>
+    <input type="number" ng-model="ph"></input>
+</div>
+
+
+<h1>
+    Light directives
+</h1>
+<div class="code">
+    var light= {color: {r: 100, g: 0, b: 255}, intensity: 100};
+    <br/>
+    var on=true
+    <br/>
+    &lt;light-intensity-editor intensity=&quot;light.intensity&quot;&gt;&lt;/light-intensity-editor&gt;
+    <br/>
+    &lt;light-color-editor color=&quot;light.color&quot;&gt;&lt;/light-color-editor&gt;
+    <br/>
+    &lt;light-viewer on=&quot;on&quot; light=&quot;light&quot;&gt;&lt;/light-viewer&gt;
+</div>
+<div ng-init="light= {color: {r: 100, g: 0, b: 255}, intensity: 100}; on=true" class="example">
+    <light-intensity-editor intensity="light.intensity"></light-intensity-editor>
+    <light-color-editor color="light.color"></light-color-editor>
+    <p>
+        r: {{light.color.r}}, g: {{light.color.g}}, b: {{light.color.b}}
+        intesity: {{light.intensity}}
+        on: {{on}}
+    </p>
+    <light-viewer on="on" light="light"></light-viewer>
+</div>
+
+
+<h1>
+    On/off directives
+</h1>
+<div class="code">
+    var onOff= false
+    <br/>
+    &lt;on-off-button on=&quot;onOff&quot;&gt;&lt;/on-off-button&gt;
+</div>
+<div ng-init="onOff= false" class="example">
+    <on-off-button on="onOff"></on-off-button>
+    <p>
+        on: {{onOff}}
+    </p>
+</div>
+
+
+<h1>
+    Mode selector directives
+</h1>
+<div class="code">
+    var modes= [{display: 'Pinterest', name: 'pinterest', icon: 'fa fa-pinterest-p'},{display: 'Facebook', name: 'facebook', icon: 'fa fa-facebook'},{display: 'Twitter', name: 'twitter', icon: 'fa fa-twitter'}];
+    <br/>
+    var selectedMode= 'pinterest';
+    <br/>
+    &lt;mode-selector modes=&quot;modes&quot; selected-mode=&quot;selectedMode&quot;&gt;&lt;/mode-selector&gt;
+</div>
+<div ng-init="modes= [{display: 'Pinterest', name: 'pinterest', icon: 'fa fa-pinterest-p'},{display: 'Facebook', name: 'facebook', icon: 'fa fa-facebook'},{display: 'Twitter', name: 'twitter', icon: 'fa fa-twitter'}]; selectedMode= 'snapchat';"class="example">
+    <div style="width: 400px; height: 100px">
+        <mode-selector modes="modes" selected-mode="selectedMode"></mode-selector>
+        <p>
+            Selected mode: {{selectedMode}}
+        </p>
+    </div>
+</div>
+<script src="bower/angular/angular.js"></script>
+<script src="bower/angular-animate/angular-animate.js"></script>
+<script src="bower/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower/ionic/release/js/ionic.js"></script>
+<script src="bower/ionic/release/js/ionic-angular.js"></script>
+<script src="dist/angular-touch-widgets.js"></script>
+<script src="js/demo.js"></script>
+</body>
+</html>

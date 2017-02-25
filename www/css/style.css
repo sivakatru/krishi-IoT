@@ -1,0 +1,82 @@
+/* Empty. Add your own CSS if you like */
+/*custom is class added to ion-content*/
+
+.bar-custom {
+      background-color: #33CD5F;
+      margin: 0px;
+      color: white;
+}       
+.tabs-striped.tabs-background-custom .tabs {
+      background-color: #33CD5F; 
+}
+
+.custom-ul {
+list-style-type: disc;
+}
+
+.custom {
+background-color: #3f4041 !important; /* This sets the background color*/
+}
+
+/*Set the background to transparent for ion-item*/
+.custom .item {
+background-color: transparent;
+border:none;   /*Removes all borders*/
+border-top: 1px solid;   /*Top Border for each menu item*/
+border-bottom:2px solid;   /*Bottom border for each menu item*/
+border-color: #666;   /*Sets colors for top and bottom border*/
+color: white;    /*Text color for each item*/
+}
+
+/*Changes the border for the last item*/
+.custom .item:last-child {
+border-bottom: 1px solid #666;
+}
+
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+background-color: transparent;
+}
+
+/*Just makes the type white*/
+.custom h2,
+.custom h3,
+.custom p,
+.custom a {
+color: white;  /*Text color for each item, overrides the color property above*/
+}/* Empty. Add your own CSS if you like */
+
+.gradient-temp-background {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, red, yellow); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, red, yellow); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, red, yellow); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, red, yellow); /* Standard syntax */
+}
+.gradient-humidity-background {
+  background: yellow; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, #4080CC, green, yellow); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, #4080CC, green, yellow); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, #4080CC, green, yellow); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, #4080CC, green, yellow); /* Standard syntax */
+}
+.gradient-moisture-background {
+  background: FDEDB0; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, #FDEDB0, #AC3802); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, #FDEDB0, #AC3802); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, #FDEDB0, #AC3802); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, #FDEDB0, #AC3802); /* Standard syntax */
+}
+.gradient-rain-background {
+  background: FDEDB0; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, #00586B, #B0CEFF); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, #00586B, #B0CEFF); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, #00586B, #B0CEFF); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, #00586B, #B0CEFF); /* Standard syntax */
+}
+.switch-toggle {
+    margin: 10px;
+    width: 15%;
+    float: right;
+    border: none;
+    height: 50px;
+}

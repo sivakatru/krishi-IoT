@@ -1,0 +1,13 @@
+<ion-view view-title="krishi IoT">
+  <ion-content align="center">
+	<ion-item>
+	<h3>Select your language</h3>
+	<select ng-model="selectedItem" ng-options="item for item in names"ng-change="updateLanguage(selectedItem)"></select>
+	
+	<div ng-model="_translate_element" id="google_translate_element">
+	</div>
+
+	<p>You can translate the content of this page by selecting a language in the select box.</p>
+	</ion-item>
+  </ion-content>
+</ion-view>
