@@ -38,7 +38,7 @@ krishi IoT app is hardware/firmware agnostic. It is developed keeping in mind th
 
 ### Sample krishi-IoT device simulator - Weather device
 ```
-mosquitto_pub -h 'MQTT_BROKER' -p 'MQTT_PORT'-i <deviceId> -t 'krishiIoT/krishi_IoT/telemetry/:deviceId' -m '{"project":"Krishi-IoT","deviceType":"Weather","deviceId":"krishi_iot_2123","sensor":{"type":"periodic","temp":32.45,"humidity":65.73,"rainPresence":"no","rain":"273}}'
+mosquitto_pub -h 'MQTT_BROKER' -p 'MQTT_PORT'-i <deviceId> -t 'krishiIoT/krishi_IoT/telemetry/:deviceId' -m '{"project":"Krishi-IoT","deviceType":"Weather","deviceId":"krishi_iot_2123","sensor":{"type":"periodic","temp":32.45,"humidity":65.73,"rainPresence":"no","rain":"273"}}'
 ```
 
 ### LICENSE
