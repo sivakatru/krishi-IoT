@@ -67,6 +67,8 @@ angular.module('krishi_IoT.controllers', [])
 			$scope.weatherWidget = true;
 			$scope.temp = sessionService.get("packet").sensor.temp;
 			$scope.humidity = sessionService.get("packet").sensor.humidity;
+			$scope.rain = sessionService.get("packet").sensor.rain;	
+			$scope.rainPresence = sessionService.get("packet").sensor.rainPresence;
 	} else if($scope.device.name === "Switch" && sessionService.get("packet") != null) {
 			$scope.switchWidget = true;
 			$scope.outlet_status.value = sessionService.get("packet").sensor.outlet_status;
@@ -94,7 +96,8 @@ angular.module('krishi_IoT.controllers', [])
 				//Now create widgets here.
 				$scope.temp = received.sensor.temp;
 				$scope.humidity = received.sensor.humidity;
-				$scope.rain = received.sensor.rain;				
+				$scope.rain = received.sensor.rain;	
+				$scope.rainPresence = received.sensor.rainPresence;				
 			} else if(received.deviceType ==="Switch") {
 				console.log("Switch device message received: "+received.deviceType+"outlet_status: "+received.sensor.outlet_status);
 				//alert("You are in switch device");
@@ -125,13 +128,21 @@ angular.module('krishi_IoT.controllers', [])
 	var regMsg;
 	var subscribe2Topic = "krishiIoT/krishi_IoT/telemetry/#";
 	var publish2Topic = "krishiIoT/krishi_IoT/register";
-	
-	
+		
 	//$scope.myForm.$invalid = false;
 	$scope.settings = {};
 	$scope.settings.broker = "169.46.147.14";
 	$scope.settings.port = "9001";
 	$scope.settings.clientID = "krishi_IoT_app"+Math.floor( Math.random() * 1000 );
+	
+	$scope.IsJsonString = function(str) {
+		try {
+			JSON.parse(str);
+		} catch (e) {
+			return false;
+		}
+		return true;
+	}
 	
 	$scope.onConnect = function onConnect() {
 		$ionicLoading.hide();
@@ -166,9 +177,13 @@ angular.module('krishi_IoT.controllers', [])
 		
 		// called when a message arrives
 		$rootScope.client.onMessageArrived = function(message) {
-			$rootScope.data = message;
-			$rootScope.$broadcast( 'msg', $rootScope.data.payloadString);
-			sessionService.set("packet", $rootScope.data.payloadString);
+			if($scope.IsJsonString(message.payloadString) == true) {
+				$rootScope.data = message;
+				$rootScope.$broadcast( 'msg', $rootScope.data.payloadString);
+				sessionService.set("packet", $rootScope.data.payloadString);
+			} else {
+				console.log("Invalid JSON received! Check your input");
+			}
 		}
 		$rootScope.client.onConnectionLost = function(responseObject){
 			if (responseObject.errorCode !== 0) {

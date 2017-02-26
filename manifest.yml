@@ -1,0 +1,8 @@
+applications:
+- disc quota: 1024M
+host: mqtt-client
+name: mqtt-client
+path: .
+domain: mybluemix.net
+instances: 1
+memory: 128M
