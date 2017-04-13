@@ -43,3 +43,6 @@ mosquitto_pub -h 'MQTT_BROKER' -p 'MQTT_PORT'-i <deviceId> -t 'krishiIoT/krishi_
 
 ### LICENSE
 krishi IoT is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
+
+### Donate
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](sivakatru@gmail.com)
